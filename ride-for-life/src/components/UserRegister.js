@@ -1,35 +1,44 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import { userRegister } from '../actions';
+
 
 class UserRegister extends React.Component {
     state = {
+        users: {
             firstname: '',
             phone: '',
             location: '',
+       }
     }
 
     handleChanges = e => {
-        console.log('Changing')
         this.setState({
-            credentials: {
-                ...this.state.credentials,
+            users: {
+                ...this.state.users,
                 [e.target.name]: e.target.value
             }
         })
     }
 
-    userRegister = e => {
+    register = e => {
         console.log('Click', e.target)
         e.preventDefault();
+        const newUser= {
+            firstname: this.state.firstname,
+            phone: this.state.phone,
+            location: this.state.location
+        }
         this.props
-        .userLogin(this.state.credentials)
-        .then(() => this.props.history.push('/user/protected'));
+        .userRegister(newUser)
+        .then(() => this.props.history.push('/user'));
     }
 
     render() {
         console.log('Rendering...')
         return (
-            <div>
-                <form onSubmit={this.login}>
+            <div className="user-register">
+                <form onSubmit={this.register}>
                     <input 
                         type="text"
                         name="name"
@@ -58,6 +67,10 @@ class UserRegister extends React.Component {
     }
 }
 
+const mapStateToProps = state => {
+    return {
+        users: state.users
+    }
+}
 
-
-export default UserRegister;
+export default connect(mapStateToProps, { userRegister } )(UserRegister);

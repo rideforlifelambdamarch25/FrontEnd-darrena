@@ -1,26 +1,27 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import { driverRegister } from '../actions';
 
 
 class DriverRegister extends React.Component {
     state = {
-        credentials: {
+        drivers: {
             firstname: '',
             lastname: '',
             phone: '',
             vehicle_type: '',
             location: '',
             username: '',
-            password: "password",
+            password: '',
             email: '',
             price: ''
         }
     }
 
     handleChanges = e => {
-        console.log('Changing')
         this.setState({
-            credentials: {
-                ...this.state.credentials,
+            drivers: {
+                ...this.state.drivers,
                 [e.target.name]: e.target.value
             }
         })
@@ -29,16 +30,27 @@ class DriverRegister extends React.Component {
     register = e => {
         console.log('Click', e.target)
         e.preventDefault();
+        const newDriver = {
+            firstname: this.state.firstname,
+            lastname: this.state.lastname,
+            phone: this.state.phone,
+            vehicle_type: this.state.vehicle_type,
+            location: this.state.location,
+            username: this.state.username,
+            password: this.state.password,
+            email: this.state.email,
+            price: Number(this.state.price)
+        }
         this.props
-        .driverRegister(this.state.credentials)
+        .driverRegister(newDriver)
         .then(() => this.props.history.push('/drivers'));
     }
 
     render() {
         console.log('Rendering...')
         return (
-            <div>
-                <form onSubmit={this.login}>
+            <div className="driver-register">
+                <form onSubmit={this.register}>
                     <input 
                         type="text"
                         name="firstname"
@@ -110,6 +122,11 @@ class DriverRegister extends React.Component {
     }
 }
 
+const mapStateToProps = state => {
+    return {
+        drivers: state.drivers
+    }
+}
 
 
-export default DriverRegister;
+export default connect(mapStateToProps, { driverRegister } )(DriverRegister);

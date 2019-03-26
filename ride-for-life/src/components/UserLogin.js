@@ -6,13 +6,12 @@ import { userLogin } from '../actions';
 class Login extends React.Component {
     state = {
         credentials: {
-            username: '',
+            userLoginQuery: '',
             password: ''
         }
     }
 
     handleChanges = e => {
-        console.log('Changing')
         this.setState({
             credentials: {
                 ...this.state.credentials,
@@ -32,7 +31,7 @@ class Login extends React.Component {
     render() {
         console.log('Rendering...')
         return (
-            <div>
+            <div className="user-login">
                 <form onSubmit={this.login}>
                     <input 
                         type="text"
@@ -57,7 +56,7 @@ class Login extends React.Component {
 
 const mapStateToProps = state => {
     return {
-        loggingIn: state.loggingIn
+        userLoggingIn: state.userLoggingIn
     }
 }
 
