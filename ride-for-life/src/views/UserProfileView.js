@@ -2,7 +2,6 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { userData } from '../actions';
-import UserProfile from '../components/UserProfile';
 
 class UserProfileView extends React.Component {
     componentDidMount() {
@@ -21,11 +20,8 @@ class UserProfileView extends React.Component {
                         <p>Name: {user.firstname}</p>
                         <p>Phone: {user.phone}</p>
                         <p>Location: {user.location}</p>
-                    
-                <Link to={`/users/${user.user_id}`}><UserProfile user={user}/>
-                </Link></ul>
+                    </ul>
                 ))}
-
             </div>
         )
     }
