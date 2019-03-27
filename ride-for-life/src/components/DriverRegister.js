@@ -31,15 +31,15 @@ class DriverRegister extends React.Component {
         console.log('Click', e.target)
         e.preventDefault();
         const newDriver = {
-            firstname: this.state.firstname,
-            lastname: this.state.lastname,
-            phone: this.state.phone,
-            vehicle_type: this.state.vehicle_type,
-            location: this.state.location,
-            username: this.state.username,
-            password: this.state.password,
-            email: this.state.email,
-            price: Number(this.state.price)
+            firstname: this.state.drivers.firstname,
+            lastname: this.state.drivers.lastname,
+            phone: this.state.drivers.phone,
+            vehicle_type: this.state.drivers.vehicle_type,
+            location: this.state.drivers.location,
+            username: this.state.drivers.username,
+            password: this.state.drivers.password,
+            email: this.state.drivers.email,
+            price: Number(this.state.drivers.price)
         }
         this.props
         .driverRegister(newDriver)
@@ -95,7 +95,7 @@ class DriverRegister extends React.Component {
                     />
                     <input 
                         type="text"
-                        name="vehicle"
+                        name="vehicle_type"
                         placeholder="Vehicle Type"
                         value={this.state.value}
                         onChange={this.handleChanges}
