@@ -25,13 +25,14 @@ class UserRegister extends React.Component {
         console.log('Click', e.target)
         e.preventDefault();
         const newUser= {
-            firstname: this.state.firstname,
-            phone: this.state.phone,
-            location: this.state.location
+            firstname: this.state.users.firstname,
+            phone: this.state.users.phone,
+            location: this.state.users.location
         }
+        console.log(newUser)
         this.props
         .userRegister(newUser)
-        .then(() => this.props.history.push('/user'));
+        .then(() => this.props.history.push('/users'));
     }
 
     render() {
@@ -41,7 +42,7 @@ class UserRegister extends React.Component {
                 <form onSubmit={this.register}>
                     <input 
                         type="text"
-                        name="name"
+                        name="firstname"
                         placeholder="First Name"
                         value={this.state.value}
                         onChange={this.handleChanges}
@@ -60,7 +61,8 @@ class UserRegister extends React.Component {
                         value={this.state.value}
                         onChange={this.handleChanges}
                     />
-                    <button type="submit">LOGIN</button>
+                    <button type="submit">Register</button>
+                    <button type="reset">Reset</button>
                 </form>
             </div>
         )
