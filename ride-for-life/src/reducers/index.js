@@ -9,6 +9,8 @@ const initialState = {
     userRegistered: false,
     driverLoggingIn: false,
     userLoggingIn: false,
+    driverLoggedIn: false,
+    userLoggedIn: false,
     getDriverData: false,
     getUserData: false,
     error: '',
@@ -36,20 +38,24 @@ const reducer = (state = initialState, action) => {
                 error: ''
             }
         case USER_REGISTER_START:
+        console.log(action)
             return {
                 ...state,
                 userRegistering: true
             }
         case USER_REGISTER_SUCCESS:
+        console.log(action)
             return {
                 ...state,
                 userRegistered: true,
                 users: [action.payload]
             }
         case USER_REGISTER_FAILURE:
+        console.log(action)
             return {
                 ...state,
-                userRegistered: false
+                userRegistered: false,
+                error: ''
             }
         case DRIVER_LOGIN_START:
             return {
@@ -59,11 +65,13 @@ const reducer = (state = initialState, action) => {
         case DRIVER_LOGIN_SUCCESS:
             return {
                 ...state,
-
+                drivers: action.payload,
+                driverLoggedIn: true
             }
         case DRIVER_LOGIN_FAILURE:
             return {
                 ...state,
+                driverLoggedIn: false,
                 error: '',
             }
         case USER_LOGIN_START:
@@ -74,13 +82,14 @@ const reducer = (state = initialState, action) => {
         case USER_LOGIN_SUCCESS:
             return {
                 ...state,
-                loggingIn: false,
+                userLoggedIn: true,
                 error: '',
                 users: [action.payload]
             }
         case USER_LOGIN_FAILURE:
             return {
                 ...state,
+                userLoggedIn: false,
                 error: '',
             }
         case GET_DRIVER_DATA_START:
@@ -91,8 +100,7 @@ const reducer = (state = initialState, action) => {
         case GET_DRIVER_DATA_SUCCESS:
             return {
                 ...state,
-                getDriverData: false,
-                drivers: [action.payload]
+                drivers: action.payload
             }
         case GET_DRIVER_DATA_FAILURE:
             return {
@@ -107,8 +115,7 @@ const reducer = (state = initialState, action) => {
         case GET_USER_DATA_SUCCESS:
             return {
                 ...state,
-                users: [action.payload],
-                getUserData: false
+                users: action.payload
             }
         case GET_USER_DATA_FAILURE:
             return {
