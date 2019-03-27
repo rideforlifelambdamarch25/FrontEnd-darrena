@@ -20,11 +20,12 @@ export const GET_USER_DATA_START ='GET_USER_DATA_START';
 export const GET_USER_DATA_SUCCESS ='GET_USER_DATA_SUCCESS';
 export const GET_USER_DATA_FAILURE ='GET_USER_DATA_FAILURE';
 
+const baseUrl = 'https://rideforlifemarch25.herokuapp.com';
 export const driverRegister = regDriver => dispatch => {
     dispatch({type: DRIVER_REGISTER_START});
     return (
         axios
-            .post('https://rideforlife.herokuapp.com/api/drivers/register', regDriver)
+            .post(`${baseUrl}/api/drivers/register`, regDriver)
             .then(res => {
                 console.log(res)
                 dispatch({type: DRIVER_REGISTER_SUCCESS, payload: res.data})
@@ -40,7 +41,7 @@ export const userRegister = regUser => dispatch => {
     dispatch({type: USER_REGISTER_START});
     return (
         axios
-            .post('https://rideforlifemarch25.herokuapp.com/api/users/register', regUser)
+            .post(`${baseUrl}/api/users/register`, regUser)
             .then(res => {
                 console.log(res)
                 dispatch({type: USER_REGISTER_SUCCESS, payload: res.data})
@@ -55,7 +56,7 @@ export const driverLogin = creds => dispatch => {
     dispatch({type: DRIVER_LOGIN_START});
     return (
         axios
-            .post('https://rideforlife.herokuapp.com/api/drivers/login', creds)
+            .post(`${baseUrl}/api/drivers/login`, creds)
             .then(res => {
                 console.log(res)
                 localStorage.setItem('token', res.data.payload)
@@ -71,7 +72,7 @@ export const userLogin = creds => dispatch => {
     dispatch({type: USER_LOGIN_START});
     return (
         axios
-            .post('https://rideforlife.herokuapp.com/api/users/login', creds)
+            .post(`${baseUrl}/api/users/login`, creds)
             .then(res => {
                 console.log(res)
                 localStorage.setItem('token', res.data.payload);
@@ -86,7 +87,7 @@ export const userLogin = creds => dispatch => {
 export const driverData = () => dispatch => {
     dispatch({type: GET_DRIVER_DATA_START});
     axios
-        .get('https://rideforlife.herokuapp.com/api/drivers', {
+        .get(`${baseUrl}/api/drivers`, {
             headers: { Authorization: localStorage.getItem('token') }
         })
         .then(res => {
@@ -102,7 +103,7 @@ export const driverData = () => dispatch => {
 export const userData = () => dispatch => {
     dispatch({type: GET_USER_DATA_START});
     axios
-        .get('https://rideforlife.herokuapp.com/api/users', {
+        .get(`${baseUrl}/api/users`, {
             headers: { Authorization: localStorage.getItem('token') }
         })
         .then(res => {
