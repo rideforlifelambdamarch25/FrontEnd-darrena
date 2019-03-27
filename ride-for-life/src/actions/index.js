@@ -36,10 +36,11 @@ export const driverRegister = regDriver => dispatch => {
 }
 
 export const userRegister = regUser => dispatch => {
+    console.log('Action', regUser)
     dispatch({type: USER_REGISTER_START});
     return (
         axios
-            .post('https://rideforlife.herokuapp.com/api/users/register', regUser)
+            .post('https://rideforlifemarch25.herokuapp.com/api/users/register', regUser)
             .then(res => {
                 console.log(res)
                 dispatch({type: USER_REGISTER_SUCCESS, payload: res.data})
