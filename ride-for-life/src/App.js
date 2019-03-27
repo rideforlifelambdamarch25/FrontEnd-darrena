@@ -20,6 +20,8 @@ class App extends Component {
           <Route path='/register' component={UserRegister}/>
           <Route path='/login' component={UserLogin}/>
           <Route path='/login' component={DriverLogin}/>
+          <Route path='/users' component={UserProfileView}/>
+          <Route path='/drivers' component={DriverProfileView}/>
           <PrivateRoute path='/user/protected' component={UserProfileView}/>
           <PrivateRoute path='/driver/protected' component={DriverProfileView} />
         </div>
