@@ -15,7 +15,11 @@ class DriverProfileView extends React.Component {
                 <h1>Driver</h1>
                 {this.props.drivers.map((driver, id) => (
                     <ul key={id}>
-                        <h1>{driver.firstname}</h1>
+                        <p>Name: {driver.firstname} {driver.lastname}</p>
+                        <p>Phone Number: {driver.phone}</p>
+                        <p>Vehicle: {driver.vehicle_type}</p>
+                        <p>location: {driver.location}</p>
+                        <p>Price: {driver.price}</p>
                     </ul>
                 ))}
             </div>
