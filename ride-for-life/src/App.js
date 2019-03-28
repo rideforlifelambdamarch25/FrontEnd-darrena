@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Route, NavLink } from 'react-router-dom';
 import Home from './components/Home';
 import DriverRegister from './components/DriverRegister';
 import UserRegister from './components/UserRegister';
@@ -19,16 +19,27 @@ class App extends Component {
     return (
       <Router>
         <div className="App">
+          <ul className="nav-bar">
+            <li>
+              <NavLink exact to="/" activeClassName="activeNavButton">Home</NavLink>
+            </li>
+            <li>
+              <NavLink to="/drivers" activeClassName="activeNavButton">Ride Request</NavLink>
+            </li>
+            <li>
+              <NavLink exact to="/driver/login" activeClassName="activeNavButton">Driver Login</NavLink>
+            </li>
+          </ul>
           <Route exact path='/' component={Home}/>
-          <Route exact path='/driver/register' component={DriverRegister}/>
+          <Route path='/driver/register' component={DriverRegister}/>
           <Route path='/user/register' component={UserRegister}/>
           <Route path='/user/login' component={UserLogin}/>
           <Route exact path='/driver/login' component={DriverLogin}/>
           <Route path='/users' component={UserProfileView}/>
           <Route exact path='/drivers' component={DriverListView}/>
           <Route path='/public' component={DriverListView}/>
-          <Route exact path='/driver/:id' component={DriverProfile}/>
-          <PrivateRoute path='/driver/protected' component={DriverListView} />
+          <Route exact path='/driver/profile/:id' component={DriverProfile}/>
+          <PrivateRoute exact path='/driver/protected' component={DriverListView} />
         </div>
       </Router>
     );

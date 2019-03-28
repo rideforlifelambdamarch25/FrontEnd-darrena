@@ -5,8 +5,14 @@ const Home = () => {
         <div>
             <h1>Ride For Life</h1>
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas mauris.</p>
-            <Link to="/user/login">Rider/Caregiver</Link> {''}
-            <Link to="/driver/login">Driver</Link>
+            <ul className="login-links">
+                <li>
+                    <Link to="/user/login">Rider/Caregiver</Link> {''}
+                </li>
+                <li>
+                    <Link to="/driver/login">Driver</Link>
+                </li>
+            </ul>
         </div>
     )
 }

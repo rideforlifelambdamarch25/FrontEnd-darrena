@@ -5,15 +5,20 @@ import { driverData } from '../actions';
 class DriverProfile extends React.Component {
     componentDidMount() {
         console.log('CDM')
+        // this.setState({drivers: this.props.driverData()})
         this.props.driverData();
       }
-      
+    // state = {drivers: []}
+    
     render() {
     const id = this.props.match.params.id;
-    const driver = this.props.drivers.find(driver => `${driver.driver_id}` === id);
+    console.log(this.props);
+    const driver = this.props.drivers.find(driver => driver.driver_id == id);
+    console.log(driver);
     return (
         <div>
             <h1>Driver Profile</h1>
+            <p>{driver.firstname}</p> 
             <p></p>
             <p></p>
         </div>
@@ -22,7 +27,7 @@ class DriverProfile extends React.Component {
 }
 
 const mapStateToProps = state => {
-    console.log(state.driver)
+    console.log(state.drivers)
     return {
       drivers: state.drivers
     }

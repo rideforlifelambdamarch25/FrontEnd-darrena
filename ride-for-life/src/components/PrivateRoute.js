@@ -10,7 +10,7 @@ const PrivateRoute = ({ component: Component, ...rest }) => {
                     return <Component />
                 } else {
                     console.log('Redirecting...')
-                    return <Redirect  to='/driver/login' />
+                    return <Redirect exact to='/driver/login' />
                 }
             }}
         />

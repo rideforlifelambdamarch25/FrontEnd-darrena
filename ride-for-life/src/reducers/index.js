@@ -17,8 +17,7 @@ const initialState = {
     creatingRide: false,
     gettingDriverId: false,
     gettingUserId: false,
-    error: '',
-    token: localStorage.getItem('token')
+    error: ''
 }
 
 const reducer = (state = initialState, action) => {
@@ -30,10 +29,11 @@ const reducer = (state = initialState, action) => {
             }
         case DRIVER_REGISTER_SUCCESS:
             console.log(action.payload)
+            localStorage.setItem('token', action.payload.token)
             return {
                 ...state,
                 driverRegistered: true,
-                drivers: action.payload
+                drivers: [...state.drivers, action.payload.driver]
             }
         case DRIVER_REGISTER_FAILURE:
             return {
@@ -48,11 +48,12 @@ const reducer = (state = initialState, action) => {
                 userRegistering: true
             }
         case USER_REGISTER_SUCCESS:
+        localStorage.setItem('user token', action.payload.token)
         console.log(action)
             return {
                 ...state,
                 userRegistered: true,
-                users: action.payload
+                users: [...state.users, action.payload.user]
             }
         case USER_REGISTER_FAILURE:
         console.log(action)
@@ -67,9 +68,10 @@ const reducer = (state = initialState, action) => {
                 driverLoggingIn: true
             }
         case DRIVER_LOGIN_SUCCESS:
+            localStorage.setItem('token', action.payload.token)
+            localStorage.setItem('id', action.payload.driver_id)
             return {
                 ...state,
-                drivers: [action.payload],
                 driverLoggedIn: true,
             }
         case DRIVER_LOGIN_FAILURE:

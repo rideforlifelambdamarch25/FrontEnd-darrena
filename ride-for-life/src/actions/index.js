@@ -65,9 +65,9 @@ export const driverLogin = creds => dispatch => {
     axios
         .post(`${baseUrl}/api/drivers/login`, creds)
         .then(res => {
-            console.log(res)
-            localStorage.setItem('token', res.data.payload)
-            dispatch({type: DRIVER_LOGIN_SUCCESS, payload: res.data.payload})
+            console.log('driver login res', res.data)
+            // localStorage.setItem('token', res.data.token)
+            dispatch({type: DRIVER_LOGIN_SUCCESS, payload: res.data})
         })
         .catch(err => {
             dispatch({type: DRIVER_LOGIN_FAILURE, payload: err})

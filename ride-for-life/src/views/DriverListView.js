@@ -10,7 +10,7 @@ class DriverListView extends React.Component {
       this.props.driverData();
     }
     
-    
+
 
     render() {
         return (
@@ -27,7 +27,7 @@ class DriverListView extends React.Component {
 }
 
 const mapStateToProps = state => {
-    console.log(state)
+    console.log('Map state', state)
     return {
         drivers: state.drivers
     }

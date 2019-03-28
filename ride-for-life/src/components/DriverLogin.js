@@ -8,7 +8,7 @@ import {driverLogin } from '../actions';
 class DriverLogin extends React.Component {
     state = {
         credentials: {
-            userLoginQuery: '',
+            username: '',
             password: ''
         }
     }
@@ -26,9 +26,13 @@ class DriverLogin extends React.Component {
     login = e => {
         console.log('Click', e.target)
         e.preventDefault();
+        let loginQuery = this.state.credentials.username
         this.props
-        .driverLogin(this.state.credentials)
-        this.props.history.push('/driver/protected');
+        .driverLogin({loginQuery, password: this.state.credentials.password})
+        let id = localStorage.getItem('id')
+        if (id) {
+           this.props.history.push('/drivers'); 
+        }
     }
 
     render() {
