@@ -1,8 +1,9 @@
-import { DRIVER_REGISTER_START, DRIVER_REGISTER_SUCCESS, DRIVER_REGISTER_FAILURE, USER_REGISTER_START, USER_REGISTER_SUCCESS, USER_REGISTER_FAILURE, DRIVER_LOGIN_START, DRIVER_LOGIN_SUCCESS, DRIVER_LOGIN_FAILURE, USER_LOGIN_START, USER_LOGIN_SUCCESS, USER_LOGIN_FAILURE, GET_DRIVER_DATA_START, GET_DRIVER_DATA_SUCCESS, GET_DRIVER_DATA_FAILURE, GET_USER_DATA_START, GET_USER_DATA_SUCCESS, GET_USER_DATA_FAILURE} from '../actions';
+import { DRIVER_REGISTER_START, DRIVER_REGISTER_SUCCESS, DRIVER_REGISTER_FAILURE, USER_REGISTER_START, USER_REGISTER_SUCCESS, USER_REGISTER_FAILURE, DRIVER_LOGIN_START, DRIVER_LOGIN_SUCCESS, DRIVER_LOGIN_FAILURE, USER_LOGIN_START, USER_LOGIN_SUCCESS, USER_LOGIN_FAILURE, GET_DRIVER_DATA_START, GET_DRIVER_DATA_SUCCESS, GET_DRIVER_DATA_FAILURE, GET_USER_DATA_START, GET_USER_DATA_SUCCESS, GET_USER_DATA_FAILURE, CREATE_RIDE_START, CREATE_RIDE_SUCCESS, CREATE_RIDE_FAILURE, GET_DRIVER_ID_START, GET_DRIVER_ID_SUCCESS, GET_DRIVER_ID_FAILURE, GET_USER_ID_START, GET_USER_ID_SUCCESS, GET_USER_ID_FAILURE } from '../actions';
 
 const initialState = {
     users: [],
     drivers: [],
+    ride: [],
     driverRegistering: false,
     userRegistering: false,
     driverRegistered: false,
@@ -13,6 +14,9 @@ const initialState = {
     userLoggedIn: false,
     getDriverData: false,
     getUserData: false,
+    creatingRide: false,
+    gettingDriverId: false,
+    gettingUserId: false,
     error: '',
     token: localStorage.getItem('token')
 }
@@ -29,7 +33,7 @@ const reducer = (state = initialState, action) => {
             return {
                 ...state,
                 driverRegistered: true,
-                drivers: [action.payload]
+                drivers: action.payload
             }
         case DRIVER_REGISTER_FAILURE:
             return {
@@ -48,7 +52,7 @@ const reducer = (state = initialState, action) => {
             return {
                 ...state,
                 userRegistered: true,
-                users: [action.payload]
+                users: action.payload
             }
         case USER_REGISTER_FAILURE:
         console.log(action)
@@ -65,8 +69,8 @@ const reducer = (state = initialState, action) => {
         case DRIVER_LOGIN_SUCCESS:
             return {
                 ...state,
-                drivers: action.payload,
-                driverLoggedIn: true
+                drivers: [action.payload],
+                driverLoggedIn: true,
             }
         case DRIVER_LOGIN_FAILURE:
             return {
@@ -118,6 +122,51 @@ const reducer = (state = initialState, action) => {
                 users: action.payload
             }
         case GET_USER_DATA_FAILURE:
+            return {
+                ...state,
+                error: ''
+            }
+        case GET_DRIVER_ID_START:
+            return {
+                ...state,
+                gettingDriverId: true
+            }
+        case GET_DRIVER_ID_SUCCESS:
+            return {
+                ...state,
+                drivers: [...action.payload]
+            }
+        case GET_DRIVER_ID_FAILURE:
+            return {
+                ...state,
+                error: ''
+            }
+        case GET_USER_ID_START:
+            return {
+                ...state,
+                gettingUserId: true
+            }
+        case GET_USER_ID_SUCCESS:
+            return {
+                ...state,
+                users: action.payload
+            }
+        case GET_USER_ID_FAILURE:
+            return {
+                ...state,
+                users: action.payload
+            }
+        case CREATE_RIDE_START:
+            return {
+                ...state,
+                creatingRide: true
+            }
+        case CREATE_RIDE_SUCCESS:
+            return {
+                ...state,
+                ride: action.payload,
+            }
+        case CREATE_RIDE_FAILURE:
             return {
                 ...state,
                 error: ''
