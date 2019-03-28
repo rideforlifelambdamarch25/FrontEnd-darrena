@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { driverData } from '../actions';
 import DriverList from '../components/DriverList';
+import '../index.css'
 
 class DriverListView extends React.Component {
     componentDidMount() {
@@ -15,9 +16,11 @@ class DriverListView extends React.Component {
         return (
             <div>
                 <h1>Driver</h1>
+                <div className="driver-list">
                 {this.props.drivers.map(driver => (
                     <DriverList key={driver.driver_id} driver={driver}/>
                 ))}
+                </div>
             </div>
         )
     }

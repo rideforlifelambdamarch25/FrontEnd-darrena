@@ -8,6 +8,8 @@ import UserLogin from './components/UserLogin'
 import PrivateRoute from './components/PrivateRoute';
 import DriverListView from './views/DriverListView';
 import UserProfileView from './views/UserProfileView';
+import DriverProfile from './components/DriverProfile';
+
 
 import './App.css';
 
@@ -18,14 +20,14 @@ class App extends Component {
       <Router>
         <div className="App">
           <Route exact path='/' component={Home}/>
-          <Route path='/driver/register' component={DriverRegister}/>
+          <Route exact path='/driver/register' component={DriverRegister}/>
           <Route path='/user/register' component={UserRegister}/>
           <Route path='/user/login' component={UserLogin}/>
           <Route exact path='/driver/login' component={DriverLogin}/>
           <Route path='/users' component={UserProfileView}/>
           <Route exact path='/drivers' component={DriverListView}/>
-          {/* <Route path='/drivers/:id' component={component}/> */}
           <Route path='/public' component={DriverListView}/>
+          <Route exact path='/driver/:id' component={DriverProfile}/>
           <PrivateRoute path='/driver/protected' component={DriverListView} />
         </div>
       </Router>
