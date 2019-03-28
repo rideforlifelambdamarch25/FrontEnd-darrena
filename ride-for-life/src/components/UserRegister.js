@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { userRegister } from '../actions';
+import '../index.css'
 
 
 class UserRegister extends React.Component {
@@ -21,6 +22,7 @@ class UserRegister extends React.Component {
         })
     }
 
+    // Got this error all of a sudden: TypeError: Cannot read property 'then' of undefined ---Fixed!
     register = e => {
         console.log('Click', e.target)
         e.preventDefault();
@@ -32,7 +34,7 @@ class UserRegister extends React.Component {
         console.log(newUser)
         this.props
         .userRegister(newUser)
-        .then(() => this.props.history.push('/users'));
+        this.props.history.push('/users');
     }
 
     render() {

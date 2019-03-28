@@ -28,6 +28,7 @@ class DriverRegister extends React.Component {
         })
     }
 
+    // Got this error all of a sudden: TypeError: Cannot read property 'then' of undefined --Fixed!
     register = e => {
         console.log('Click', e.target)
         e.preventDefault();
@@ -44,7 +45,7 @@ class DriverRegister extends React.Component {
         }
         this.props
         .driverRegister(newDriver)
-        .then(() => this.props.history.push('/drivers'));
+        this.props.history.push('/drivers');
     }
 
     render() {

@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import {driverLogin } from '../actions';
 
 
+
 class DriverLogin extends React.Component {
     state = {
         credentials: {
@@ -21,12 +22,13 @@ class DriverLogin extends React.Component {
         })
     }
 
+    // Got this error all of a sudden: TypeError: Cannot read property 'then' of undefined ---FIXED!
     login = e => {
         console.log('Click', e.target)
         e.preventDefault();
         this.props
         .driverLogin(this.state.credentials)
-        .then(() => this.props.history.push('/driver/protected'));
+        this.props.history.push('/driver/protected');
     }
 
     render() {

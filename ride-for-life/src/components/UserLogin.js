@@ -20,35 +20,32 @@ class Login extends React.Component {
         })
     }
 
+    // Got this error all of a sudden: TypeError: Cannot read property 'then' of undefined --Fixed!
     login = e => {
         console.log('Click', e.target)
         e.preventDefault();
         this.props
         .userLogin(this.state.credentials)
-        .then(() => this.props.history.push('/user/protected'));
+        this.props.history.push('/drivers');
     }
 
     render() {
         console.log('Rendering...')
         return (
-            <div className="user-login">
-                <form onSubmit={this.login}>
-                    <input 
-                        type="text"
-                        name="username"
-                        placeholder="Username"
-                        value={this.state.value}
-                        onChange={this.handleChanges}
-                    />
-                    <input 
-                        type="password"
-                        name="password"
-                        placeholder="Password"
-                        value={this.state.value}
-                        onChange={this.handleChanges}
-                    />
-                    <button type="submit">LOGIN</button>
-                </form>
+            <div>
+                <h1>Riders/Caregivers</h1>
+                <div className="user-login">
+                    <form onSubmit={this.login}>
+                        <input 
+                            type="text"
+                            name="username"
+                            placeholder="Name, Phone Number, or Email"
+                            value={this.state.value}
+                            onChange={this.handleChanges}
+                        />
+                        <button type="submit">Login</button>
+                    </form>
+                </div>
             </div>
         )
     }
