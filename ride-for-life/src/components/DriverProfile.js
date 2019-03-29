@@ -35,10 +35,12 @@ class DriverProfile extends React.Component {
                   value={()=>{}}
                 />
               </label> 
-              <label for="comment">Comment:
-              <textarea rows="4" cols="50" name="comment" form="usrform">
-Enter text here...</textarea>
-              </label>
+              <textarea 
+                rows="4" 
+                cols="50" 
+                name="comment" 
+                form="usrform">Enter comment here..
+                .</textarea>
               <button>Submit Comment</button>
             </form>
           </div>
