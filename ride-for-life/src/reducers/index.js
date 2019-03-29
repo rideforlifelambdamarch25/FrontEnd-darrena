@@ -106,7 +106,8 @@ const reducer = (state = initialState, action) => {
         case GET_DRIVER_DATA_SUCCESS:
             return {
                 ...state,
-                drivers: action.payload
+                drivers: [...action.payload]
+
             }
         case GET_DRIVER_DATA_FAILURE:
             return {

@@ -48,6 +48,7 @@ class UserRegister extends React.Component {
                         placeholder="First Name"
                         value={this.state.value}
                         onChange={this.handleChanges}
+                        required
                     />
                     <input 
                         type="tel"
@@ -55,6 +56,7 @@ class UserRegister extends React.Component {
                         placeholder="Phone Number"
                         value={this.state.value}
                         onChange={this.handleChanges}
+                        required
                     />
                     <input 
                         type="text"
@@ -62,9 +64,10 @@ class UserRegister extends React.Component {
                         placeholder="Location"
                         value={this.state.value}
                         onChange={this.handleChanges}
+                        required
                     />
                     <button type="submit">Register</button>
-                    <button type="reset">Reset</button>
+                    {/* <button type="reset">Reset</button> */}
                 </form>
             </div>
         )

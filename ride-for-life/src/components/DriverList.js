@@ -4,14 +4,17 @@ import { withRouter } from 'react-router-dom';
 const DriverList = props => {
     const { firstname, lastname, phone, vehicle_type, location, price } = props.driver
     return(
-        <div onClick={() => routeToDriver(props, props.driver)} className="driver-card">
-            <ul>
-                <p>{firstname} {lastname}</p>
-                <p>Phone Number: {phone}</p>
-                <p>Vehicle: {vehicle_type}</p>
-                <p>location: {location}</p>
-                <p>Price: {price}</p>
-            </ul>
+       <div>
+            <div onClick={() => routeToDriver(props, props.driver)} className="driver-card">
+                <ul>
+                    <p>{firstname} {lastname}</p>
+                    <p>Phone Number: {phone}</p>
+                    <p>Vehicle: {vehicle_type}</p>
+                    <p>Location: {location}</p>
+                    <p>Price: {price}</p>
+                </ul>
+            </div>
+            <button>Request Driver</button>
         </div>
     )
 }

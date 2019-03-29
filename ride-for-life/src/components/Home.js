@@ -7,7 +7,7 @@ const Home = () => {
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas mauris.</p>
             <ul className="login-links">
                 <li>
-                    <Link to="/user/login">Rider/Caregiver</Link> {''}
+                    <Link to="/user/register">Rider/Caregiver</Link> {''}
                 </li>
                 <li>
                     <Link to="/driver/login">Driver</Link>

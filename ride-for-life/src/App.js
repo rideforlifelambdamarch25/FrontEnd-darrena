@@ -20,8 +20,15 @@ class App extends Component {
       <Router>
         <div className="App">
           <ul className="nav-bar">
+           <h2>Ride for Life</h2>
             <li>
               <NavLink exact to="/" activeClassName="activeNavButton">Home</NavLink>
+            </li>
+            <li>
+              <NavLink to="/user/register" activeClassName="activeNavButton">Rider Signup</NavLink>
+            </li>
+            <li>
+              <NavLink exact to="/driver/register" activeClassName="activeNavButton">Driver Signup</NavLink>
             </li>
             <li>
               <NavLink to="/drivers" activeClassName="activeNavButton">Ride Request</NavLink>

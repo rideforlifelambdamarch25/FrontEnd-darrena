@@ -52,8 +52,6 @@ class DriverRegister extends React.Component {
         console.log('Rendering...')
         return (
             <div>
-                <Link exact to="/">Home</Link>
-                <Link exact to="/driver/login">Driver Login</Link>
                 <h1>Driver Registration</h1>
                 <div className="driver-register">
                     <form onSubmit={this.register}>
@@ -63,6 +61,7 @@ class DriverRegister extends React.Component {
                             placeholder="First Name"
                             value={this.state.value}
                             onChange={this.handleChanges}
+                            required
                         />
                         <input 
                             type="text"
@@ -70,6 +69,7 @@ class DriverRegister extends React.Component {
                             placeholder="Last Name"
                             value={this.state.value}
                             onChange={this.handleChanges}
+                            required
                         />
                         <input 
                             type="text"
@@ -77,6 +77,7 @@ class DriverRegister extends React.Component {
                             placeholder="Username"
                             value={this.state.value}
                             onChange={this.handleChanges}
+                            required
                         />
                         <input 
                             type="password"
@@ -84,6 +85,7 @@ class DriverRegister extends React.Component {
                             placeholder="Password"
                             value={this.state.value}
                             onChange={this.handleChanges}
+                            required
                         />
                         <input 
                             type="email"
@@ -91,6 +93,7 @@ class DriverRegister extends React.Component {
                             placeholder="Email"
                             value={this.state.value}
                             onChange={this.handleChanges}
+                            required
                         />
                         <input 
                             type="tel"
@@ -98,6 +101,7 @@ class DriverRegister extends React.Component {
                             placeholder="Phone Number"
                             value={this.state.value}
                             onChange={this.handleChanges}
+                            required
                         />
                         <input 
                             type="text"
@@ -105,6 +109,7 @@ class DriverRegister extends React.Component {
                             placeholder="Vehicle Type"
                             value={this.state.value}
                             onChange={this.handleChanges}
+                            required
                         />
                         <input 
                             type="text"
@@ -112,6 +117,7 @@ class DriverRegister extends React.Component {
                             placeholder="Location"
                             value={this.state.value}
                             onChange={this.handleChanges}
+                            required
                         />
                         <input 
                             type="text"
@@ -119,9 +125,10 @@ class DriverRegister extends React.Component {
                             placeholder="Price"
                             value={this.state.value}
                             onChange={this.handleChanges}
+                            required
                         />
                         <button type="submit">Register</button>
-                        <button type="reset">Reset</button>
+                        {/* <button type="reset">Reset</button> */}
                     </form>
                 </div>
             </div>
