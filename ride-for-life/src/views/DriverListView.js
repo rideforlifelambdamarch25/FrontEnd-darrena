@@ -5,16 +5,13 @@ import DriverList from '../components/DriverList';
 import '../index.css'
 
 class DriverListView extends React.Component {
-    // state = {
-    //     searchData: []
-    // }
     componentDidMount() {
       console.log('CDM')
       this.props.driverData();
     }
 
 
-    
+    // TypeError: Cannot read property 'drivers' of null -- NEEED TO FIX!
     searchBarHandler = e => {
         const drivers = this.state.drivers.filter( driver => {
           if(driver.location.includes(e.target.value)) {
