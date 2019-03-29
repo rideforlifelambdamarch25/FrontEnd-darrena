@@ -28,6 +28,12 @@ export const GET_DRIVER_ID_FAILURE = 'GET_DRIVER_ID_FAILURE';
 export const GET_USER_ID_START = 'GET_USER_ID_START';
 export const GET_USER_ID_SUCCESS = 'GET_USER_ID_SUCCESS';
 export const GET_USER_ID_FAILURE = 'GET_USER_ID_FAILURE';
+export const UPDATE_DRIVER_START = 'UPDATE_DRIVER_START';
+export const UPDATE_DRIVER_SUCCESS = 'UPDATE_DRIVER_SUCCESS';
+export const UPDATE_DRIVER_FAILURE = 'UPDATE_DRIVER_FAILURE';
+export const DELETE_DRIVER_START = 'DELETE_DRIVER_START';
+export const DELETE_DRIVER_SUCCESS = 'DELETE_DRIVER_SUCCESS';
+export const DELETE_DRIVER_FAILURE = 'DELETE_DRIVER_FAILURE';
 
 
 const baseUrl = 'https://rideforlifemarch25.herokuapp.com';
@@ -164,6 +170,34 @@ export const getUserId = () => dispatch => {
         .catch(err => {
             console.log(err)
             dispatch({type: GET_USER_ID_FAILURE, payload: err})
+        })
+}
+
+export const updateDriver = updateDriver => dispatch => {
+    dispatch({type: UPDATE_DRIVER_START});
+    axios
+        .put(`${baseUrl}/api/drivers/:id`, updateDriver)
+        .then(res => {
+            console.log(res)
+            dispatch({type: UPDATE_DRIVER_SUCCESS, payload: res.data})
+        })
+        .catch(err => {
+            console.log(err)
+            dispatch({type: UPDATE_DRIVER_FAILURE, payload: err})
+        })
+}
+
+export const deleteDriver = deleteDriver => dispatch => {
+    dispatch({type: DELETE_DRIVER_START});
+    axios
+        .put(`${baseUrl}/api/drivers/:id`, deleteDriver)
+        .then(res => {
+            console.log(res)
+            dispatch({type: DELETE_DRIVER_SUCCESS, payload: res.data})
+        })
+        .catch(err => {
+            console.log(err)
+            dispatch({type: DELETE_DRIVER_FAILURE, payload: err})
         })
 }
 
