@@ -12,6 +12,8 @@ const DriverList = props => {
                     <p>Vehicle: {vehicle_type}</p>
                     <p>Location: {location}</p>
                     <p>Price: {price}</p>
+                    <button>Update</button>
+                    <button>Delete</button>
                 </ul>
             </div>
             <button>Request Driver</button>
